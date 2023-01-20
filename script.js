@@ -29,7 +29,7 @@ function playRound(playerSelection, computerSelection){
             if(computerSelection == "rock"){
                 return "Player Wins! Paper Beats Rock";
             }else{
-                return "Computer loses! Scissors Beats Paper"
+                return "Player loses! Scissors Beats Paper"
             }
 
             break;
@@ -37,7 +37,7 @@ function playRound(playerSelection, computerSelection){
             if(computerSelection == "paper"){
                 return "Player Wins! Scissors Beats Paper";
             }else{
-                return "Computer Wins! Rock Beats Scissors"
+                return "Player Loses! Rock Beats Scissors"
             }
             break;
         default:
@@ -53,23 +53,6 @@ function game(){
     var computerScore = 0;
     var playerScore = 0;
     
-    for(i = 0; i < maxScore; i++){
-        winner = playRound(prompt("Rock, Paper, Scissors?"), getComputerChoice());
-        console.log(winner)
-        if(winner.split(" ")[0] == "Player"){
-            playerScore += 1;
-        }else{
-            computerScore += 1;
-        }
-        
-    }
-    if(playerScore > computerScore){
-        return "Player Wins!"
-    }else if(computerScore > playerScore){
-        return "Computer Wins!"
-    }else{
-        return "Draw Game!"
-    }
 }
 
 console.log(game())
