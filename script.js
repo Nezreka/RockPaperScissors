@@ -1,5 +1,18 @@
 var playerChoice = "rock";
 
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+        playerChoice = button.dataset.selection;
+        console.log(playerChoice);
+    });
+});
+
+
+
 function getComputerChoice(){
     var randomNum = Math.random()*10;
     if(randomNum < 3.33){
@@ -54,19 +67,3 @@ function game(){
     var playerScore = 0;
     
 }
-
-
-
-const buttons = document.querySelectorAll("button");
-console.log(buttons);
-
-buttons.forEach((button) => {
-
-    // and for each one we add a 'click' listener
-    button.addEventListener('click', () => {
-        playerChoice = button.dataset.selection;
-        console.log(playerChoice);
-    });
-});
-
-
