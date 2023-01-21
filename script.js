@@ -1,10 +1,10 @@
-const playerChoice = "rock";
+var playerChoice = "rock";
 
 function getComputerChoice(){
     var randomNum = Math.random()*10;
-    if(randomNum < 3){
+    if(randomNum < 3.33){
         return "rock";
-    }else if(randomNum > 6){
+    }else if(randomNum > 6.66){
         return "paper";
     }else{
         return "scissors";
@@ -55,7 +55,18 @@ function game(){
     
 }
 
-console.log(game())
 
+
+const buttons = document.querySelectorAll("button");
+console.log(buttons);
+
+buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+        playerChoice = button.dataset.selection;
+        console.log(playerChoice);
+    });
+});
 
 
