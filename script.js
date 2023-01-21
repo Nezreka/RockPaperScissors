@@ -1,13 +1,36 @@
 var playerChoice = "rock";
-
+const maxScore = 5;
+var computerScore = 0;
+var playerScore = 0;
 const buttons = document.querySelectorAll("button");
+
+function setScore(player){
+    if(player == "player"){
+        playerScore += 1;
+        document.querySelector(".playerScore").textContent = playerScore;
+    }else if(player =="computer"){
+        computerScore += 1
+        document.querySelector(".computerScore").textContent = playerScore;
+    }
+    
+
+}
+    
 
 buttons.forEach((button) => {
 
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-        playerChoice = button.dataset.selection;
-        console.log(playerChoice);
+        
+        if(playerScore < maxScore && computerScore < maxScore){
+            setScore(playRound(button.dataset.selection, getComputerChoice()));
+        }
+        if(playerScore == maxScore){
+            document.querySelector(".title").textContent = "Player Wins!"
+            
+        }else if(computerScore == maxScore){
+            document.querySelector(".title").textContent = "Computer Wins!"
+        }
     });
 });
 
@@ -25,32 +48,32 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase();
+
     if (playerSelection == computerSelection){
-        return "It's a draw!";
+        return "draw";
     }
     switch(playerSelection){
         case "rock":
             if(computerSelection == "paper"){
-                return "Player loses! Paper Beats Rock";
+                return "computer";
             }else{
-                return "Player Wins! Rock Beats Scissors"
+                return "player"
             }
 
             break;
         case "paper":
             if(computerSelection == "rock"){
-                return "Player Wins! Paper Beats Rock";
+                return "player";
             }else{
-                return "Player loses! Scissors Beats Paper"
+                return "computer"
             }
 
             break;
         case "scissors":
             if(computerSelection == "paper"){
-                return "Player Wins! Scissors Beats Paper";
+                return "player";
             }else{
-                return "Player Loses! Rock Beats Scissors"
+                return "computer";
             }
             break;
         default:
@@ -62,8 +85,6 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
-    var maxScore = 5;
-    var computerScore = 0;
-    var playerScore = 0;
+  
     
 }
